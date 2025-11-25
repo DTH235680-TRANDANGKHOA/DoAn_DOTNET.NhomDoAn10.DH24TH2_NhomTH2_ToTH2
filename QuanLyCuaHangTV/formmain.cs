@@ -24,14 +24,14 @@ namespace QuanLyCuaHangTV
 
            
             // CODE ĐỂ CHÈN HÌNH ẢNH VÀO FULL MÀN HÌNH 
-            // 1. Tải ảnh từ Resources của dự án
+            // Tải ảnh từ Resources của dự án
             // thêm ảnh 'dienmayxanh' vào Resources của dự án
             this.BackgroundImage = Properties.Resources.dienmayxanh;
 
-            // 2. Cấu hình cách hiển thị ảnh nền: Stretch để lấp đầy toàn bộ Form
+            //  Cấu hình cách hiển thị ảnh nền: Stretch để lấp đầy toàn bộ Form
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
-            // 3. Đặt Form ở chế độ Maximize (phóng to)
+            //  Đặt Form ở chế độ Maximize (phóng to)
             this.WindowState = FormWindowState.Maximized;
 
             // muốn loại bỏ thanh tiêu đề và viền của Form
@@ -87,7 +87,7 @@ namespace QuanLyCuaHangTV
        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            // Sự kiện này hiện không làm gì cả, có thể bỏ qua hoặc xóa nếu không dùng PictureBox.
+           
         }
     }
 }

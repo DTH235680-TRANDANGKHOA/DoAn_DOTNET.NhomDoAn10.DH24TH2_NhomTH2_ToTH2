@@ -72,7 +72,7 @@ namespace QuanLyCuaHangTV
 
         private void LoadComboBoxMaTIVI()
         {
-            // ĐÃ SỬA: Hiển thị Mã TIVI thay vì Tên TIVI
+            // Hiển thị Mã TIVI thay vì Tên TIVI
             string sql = "SELECT MaTIVI, TenTIVI FROM FormQuanLyTV";
             Functions.FillCombo(sql, cmbMaTIVI, "MaTIVI", "MaTIVI"); // Thay "TenTIVI" bằng "MaTIVI"
         }
@@ -120,7 +120,7 @@ namespace QuanLyCuaHangTV
         {
             string sql;
 
-            // 1. Validation (Kiểm tra dữ liệu)
+            //  Validation (Kiểm tra dữ liệu)
             if (txtMaChiTietHD.Text.Trim() == "") { MessageBox.Show("Mã chi tiết HĐ không rỗng!"); txtMaChiTietHD.Focus(); return; }
             if (cmbMaHoaDon.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn Hóa đơn!"); cmbMaHoaDon.Focus(); return; }
             if (cmbMaTIVI.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn TIVI!"); cmbMaTIVI.Focus(); return; }
@@ -135,10 +135,10 @@ namespace QuanLyCuaHangTV
             string maHD = cmbMaHoaDon.SelectedValue.ToString(); // Lấy giá trị ẩn (MaHoaDon)
             string maTIVI = cmbMaTIVI.SelectedValue.ToString(); // Lấy giá trị ẩn (MaTIVI)
 
-            // 2. Phân biệt Thêm / Sửa
+            //  Phân biệt Thêm / Sửa
             if (txtMaChiTietHD.Enabled == true) 
             {
-                // 2A. Kiểm tra trùng Mã
+                //  Kiểm tra trùng Mã
                 sql = "SELECT MaChiTietHoaDon FROM FormChiTietHoaDon WHERE MaChiTietHoaDon=N'" + maCTHD + "'";
                 if (Functions.CheckKey(sql))
                 {
@@ -147,7 +147,7 @@ namespace QuanLyCuaHangTV
                     return;
                 }
 
-                // 2B. INSERT
+                //  INSERT
                 sql = "INSERT INTO FormChiTietHoaDon(MaChiTietHoaDon, MaHoaDon, MaTIVI, SoLuongMua, DonGia) " +
                       "VALUES (N'" + maCTHD + "', N'" + maHD + "', N'" + maTIVI + "', " +
                       soLuong + ", " + donGia.ToString().Replace(',', '.') + ")"; // Định dạng số thập phân cho SQL
@@ -163,12 +163,12 @@ namespace QuanLyCuaHangTV
                       "WHERE MaChiTietHoaDon=N'" + maCTHD + "'";
             }
 
-            // 3. Thực thi
+            //  Thực thi
             Functions.RunSQL(sql);
             LoadDataGridView();
             ResetValues();
 
-            // 4. Reset nút
+            //  Reset nút
             btnLuu.Enabled = false;
             txtMaChiTietHD.Enabled = false;
             btnThem.Enabled = true;

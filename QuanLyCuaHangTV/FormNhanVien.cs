@@ -111,7 +111,7 @@ namespace QuanLyCuaHangTV
             if (txtMaNV.Text.Trim() == "") { MessageBox.Show("Mã nhân viên không được rỗng!"); txtMaNV.Focus(); return; }
             if (txtHoTen.Text.Trim() == "") { MessageBox.Show("Họ tên không được rỗng!"); txtHoTen.Focus(); return; }
 
-            // Thử chuyển đổi Lương sang số
+            //  chuyển đổi Lương sang số
             decimal luong = 0;
             if (!decimal.TryParse(txtLuong.Text, out luong))
             {
@@ -163,7 +163,7 @@ namespace QuanLyCuaHangTV
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            // Đây mới là code của nút Thoát
+           
             if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();
@@ -172,7 +172,7 @@ namespace QuanLyCuaHangTV
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            // Đây mới là code của nút Xóa
+            
             if (txtMaNV.Text == "")
             {
                 MessageBox.Show("Bạn chưa chọn nhân viên nào");
@@ -192,7 +192,7 @@ namespace QuanLyCuaHangTV
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Lấy code từ hàm "dgvDanhSachNhanVien_CellContentClick" cũ của bạn
+            // Lấy code từ hàm "dgvDanhSachNhanVien_CellContentClick" cũ 
             if (btnThem.Enabled == false) { return; } // Đang ở chế độ Thêm
             if (tblNhanVien.Rows.Count == 0) { return; } // Không có dữ liệu
 

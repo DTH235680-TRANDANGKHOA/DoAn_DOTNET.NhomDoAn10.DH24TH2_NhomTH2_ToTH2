@@ -64,14 +64,14 @@ namespace QuanLyCuaHangTV
         // --- CÁC HÀM TẢI COMBOBOX (ĐÃ FIX HIỂN THỊ MÃ) ---
         private void LoadComboBoxMaNhanVien()
         {
-            // FIX: Dùng MaNhanVien cho DisplayMember để hiển thị Mã
+            
             string sql = "SELECT MaNhanVien, HoTen FROM FormNhanVien";
             Functions.FillCombo(sql, cmbMaNhanVien, "MaNhanVien", "MaNhanVien");
         }
 
         private void LoadComboBoxMaKhachHang()
         {
-            // FIX: Dùng MaKhachHang cho DisplayMember để hiển thị Mã
+           
             string sql = "SELECT MaKhachHang, HoTen FROM FormKhachHang";
             Functions.FillCombo(sql, cmbMaKhachHang, "MaKhachHang", "MaKhachHang");
         }
@@ -127,7 +127,7 @@ namespace QuanLyCuaHangTV
             if (cmbMaNhanVien.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn nhân viên!"); cmbMaNhanVien.Focus(); return; }
             if (cmbMaKhachHang.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn khách hàng!"); cmbMaKhachHang.Focus(); return; }
 
-            // 💡 CHỈNH SỬA: Kiểm tra Tổng tiền có phải là số hợp lệ không
+            //Kiểm tra Tổng tiền có phải là số hợp lệ không
             decimal tongTien;
             if (txtTongTien.Text.Trim() == "")
             {

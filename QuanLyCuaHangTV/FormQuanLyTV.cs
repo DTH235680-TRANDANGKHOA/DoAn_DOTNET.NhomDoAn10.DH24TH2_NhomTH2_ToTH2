@@ -148,7 +148,7 @@ namespace QuanLyCuaHangTV
                       txtKichThuoc.Text.Trim() + "', N'" + hangSX + "', " +
                       soluong + ", " + gia + ", N'" + txtBaoHanh.Text.Trim() + "')";
             }
-            else // SỬA
+            else 
             {
                 // 2C. UPDATE (Dùng hangSX đã lấy ở trên)
                 sql = "UPDATE FormQuanLyTV SET " +
@@ -224,7 +224,7 @@ namespace QuanLyCuaHangTV
         }
 
         private void dgvDanhSachTIVI_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {// Đây là code của bạn, đã được chuyển vào đúng sự kiện
+        {
             if (btnThem.Enabled == false) { return; }
             if (tblTV.Rows.Count == 0) { return; }
 

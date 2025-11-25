@@ -18,14 +18,14 @@ namespace QuanLyCuaHangTV
         {
 
 
-            // ====== Cấu hình chuỗi kết nối ======
+            // Cấu hình chuỗi kết nối 
             // Đã cập nhật chuỗi kết nối theo thông tin máy chủ của bạn
             string connectionString = @"Data Source=DESKTOP-77A826O;Initial Catalog=QuanLyCuaHangTV;Integrated Security=True;TrustServerCertificate=True";
 
-            // ====== Khởi tạo đối tượng SqlConnection ======
+            //  Khởi tạo đối tượng SqlConnection 
             Con = new SqlConnection(connectionString);
             
-            // --- Bổ sung kiểm tra để tránh lỗi ---
+            //  Bổ sung kiểm tra để tránh lỗi 
             if (Con.State != ConnectionState.Open)
             {
                 try
