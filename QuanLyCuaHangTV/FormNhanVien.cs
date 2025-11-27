@@ -20,20 +20,7 @@ namespace QuanLyCuaHangTV
 
         private void dgvDanhSachNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (btnThem.Enabled == false) { return; } // Đang ở chế độ Thêm
-            if (tblNhanVien.Rows.Count == 0) { return; } // Không có dữ liệu
-
-            // Hiển thị dữ liệu lên controls
-            txtMaNV.Text = dgvNhanVien.CurrentRow.Cells["MaNhanVien"].Value.ToString();
-            txtHoTen.Text = dgvNhanVien.CurrentRow.Cells["HoTen"].Value.ToString();
-            txtChucVu.Text = dgvNhanVien.CurrentRow.Cells["ChucVu"].Value.ToString();
-            txtLuong.Text = dgvNhanVien.CurrentRow.Cells["Luong"].Value.ToString();
-
-            // Kích hoạt các nút Sửa, Xóa
-            btnSua.Enabled = true;
-            btnXoa.Enabled = true;
-            btnLuu.Enabled = false;
-            txtMaNV.Enabled = false;
+            
         }
 
         private void FormNhanVien_Load(object sender, EventArgs e)
@@ -55,9 +42,9 @@ namespace QuanLyCuaHangTV
         // Ghi chú: Hàm tải dữ liệu từ CSDL lên DataGridView
         private void LoadDataGridView()
         {
-            string sql = "SELECT MaNhanVien, HoTen, ChucVu, Luong FROM FormNhanVien";
-            tblNhanVien = Functions.GetDataToTable(sql);
-            dgvNhanVien.DataSource = tblNhanVien;
+            string sql = "SELECT MaNhanVien, HoTen, ChucVu, Luong FROM FormNhanVien";// Lệnh SQL lấy toàn bộ dữ liệu
+            tblNhanVien = Functions.GetDataToTable(sql);// Đọc dữ liệu từ CSDL
+            dgvNhanVien.DataSource = tblNhanVien;// Đưa dữ liệu lên DataGridView
 
             // Đặt tên cột
             dgvNhanVien.Columns[0].HeaderText = "Mã Nhân Viên";
@@ -65,9 +52,9 @@ namespace QuanLyCuaHangTV
             dgvNhanVien.Columns[2].HeaderText = "Chức Vụ";
             dgvNhanVien.Columns[3].HeaderText = "Lương";
 
-            dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvNhanVien.AllowUserToAddRows = false;
-            dgvNhanVien.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;// Tự động điều chỉnh kích thước cột
+            dgvNhanVien.AllowUserToAddRows = false;// Không cho người dùng thêm dữ liệu trực tiếp
+            dgvNhanVien.EditMode = DataGridViewEditMode.EditProgrammatically;// Không cho sửa dữ liệu trực tiếp
         }
 
         // --- HÀM RESET CÁC Ô NHẬP ---
@@ -96,8 +83,8 @@ namespace QuanLyCuaHangTV
             if (txtMaNV.Text == "") { MessageBox.Show("Bạn chưa chọn nhân viên nào"); return; }
 
             txtMaNV.Enabled = false; // Không cho sửa Khóa chính
-            btnLuu.Enabled = true;
-            btnThem.Enabled = false;
+            btnLuu.Enabled = true;// Kích hoạt nút Lưu
+            btnThem.Enabled = false;// Vô hiệu nút Thêm
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             txtHoTen.Focus();
@@ -191,7 +178,8 @@ namespace QuanLyCuaHangTV
         }
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        { //lý do tạo hàm này là để khi bấm vào 1 ô bất kỳ trong DataGridView thì nó sẽ hiện thị dữ liệu lên các TextBox tương ứng
+            // còn dgvDanhSachNhanVien_CellContentClick thì chỉ khi bấm vào nội dung trong ô thì mới hiện thị dữ liệu lên các TextBox
             // Lấy code từ hàm "dgvDanhSachNhanVien_CellContentClick" cũ 
             if (btnThem.Enabled == false) { return; } // Đang ở chế độ Thêm
             if (tblNhanVien.Rows.Count == 0) { return; } // Không có dữ liệu

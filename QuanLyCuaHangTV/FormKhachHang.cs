@@ -33,23 +33,23 @@ namespace QuanLyCuaHangTV
             //Tải dữ liệu
             LoadDataGridView();
 
-            dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;// Tự động điều chỉnh kích thước cột
         }
         // --- HÀM TẢI DỮ LIỆU LÊN DATAGRIDVIEW ---
         private void LoadDataGridView()
         {
             string sql;
             sql = "SELECT MaKhachHang, HoTen, DiaChi, SoDienThoai FROM FormKhachHang";
-            tblKhachHang = Functions.GetDataToTable(sql);
-            dgvKhachHang.DataSource = tblKhachHang;
+            tblKhachHang = Functions.GetDataToTable(sql);//Đọc dữ liệu từ bảng
+            dgvKhachHang.DataSource = tblKhachHang;//Nguồn dữ liệu
 
             dgvKhachHang.Columns[0].HeaderText = "Mã Khách Hàng";
             dgvKhachHang.Columns[1].HeaderText = "Họ Tên";
             dgvKhachHang.Columns[2].HeaderText = "Địa Chỉ";
             dgvKhachHang.Columns[3].HeaderText = "SĐT";
 
-            dgvKhachHang.AllowUserToAddRows = false;
-            dgvKhachHang.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgvKhachHang.AllowUserToAddRows = false;//Không cho người dùng thêm dữ liệu trực tiếp
+            dgvKhachHang.EditMode = DataGridViewEditMode.EditProgrammatically;//Không cho sửa dữ liệu trực tiếp
         }
 
         // --- HÀM RESET CÁC Ô NHẬP ---
@@ -62,18 +62,18 @@ namespace QuanLyCuaHangTV
         }
         private void dgvKhacHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (btnThem.Enabled == false) { return; }
-            if (tblKhachHang.Rows.Count == 0) { return; }
+            if (btnThem.Enabled == false) { return; }//Kiểm tra nút Thêm có đang tắt hay không
+            if (tblKhachHang.Rows.Count == 0) { return; }//Kiểm tra bảng có dữ liệu hay không
 
-            txtMaKhachHang.Text = dgvKhachHang.CurrentRow.Cells["MaKhachHang"].Value.ToString();
+            txtMaKhachHang.Text = dgvKhachHang.CurrentRow.Cells["MaKhachHang"].Value.ToString();//Gán dữ liệu
             txtHoTen.Text = dgvKhachHang.CurrentRow.Cells["HoTen"].Value.ToString();
             txtDiaChi.Text = dgvKhachHang.CurrentRow.Cells["DiaChi"].Value.ToString();
             txtSDT.Text = dgvKhachHang.CurrentRow.Cells["SoDienThoai"].Value.ToString();
 
-            btnSua.Enabled = true;
+            btnSua.Enabled = true;//Bật nút Sửa
             btnXoa.Enabled = true;
-            btnLuu.Enabled = false;
-            txtMaKhachHang.Enabled = false;
+            btnLuu.Enabled = false;//Tắt nút Lưu
+            txtMaKhachHang.Enabled = false;//   Tắt ô Mã KH (không cho sửa Khóa chính)
         }
 
        
@@ -178,7 +178,8 @@ namespace QuanLyCuaHangTV
         }
 
         private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        { //lý do dùng CellClick thay vì CellContentClick là vì CellClick sẽ phản hồi khi người dùng nhấp vào bất kỳ đâu trong ô, trong khi CellContentClick chỉ phản hồi khi nhấp vào nội dung bên trong ô (ví dụ: văn bản hoặc hình ảnh).
+          //Điều này giúp cải thiện trải nghiệm người dùng khi chọn một hàng trong DataGridView.
             // Kiểm tra 1: Nếu đang ở chế độ THÊM (nút Thêm đang tắt) thì không làm gì
             if (btnThem.Enabled == false)
             {

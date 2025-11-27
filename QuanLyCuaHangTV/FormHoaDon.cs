@@ -29,7 +29,7 @@ namespace QuanLyCuaHangTV
             btnLuu.Enabled = false;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            // 💡 CHỈNH SỬA: BỎ txtTongTien.Enabled = false; để cho phép nhập
+           
 
             // 2. Tải các ComboBox (Phải tải trước)
             LoadComboBoxMaNhanVien();
@@ -39,8 +39,8 @@ namespace QuanLyCuaHangTV
             LoadDataGridView();
 
             // 4. Đặt mặc định ComboBox
-            cmbMaNhanVien.SelectedIndex = -1;
-            cmbMaKhachHang.SelectedIndex = -1;
+            cmbMaNhanVien.SelectedIndex = -1;// Chọn không có mục nào
+            cmbMaKhachHang.SelectedIndex = -1;// Chọn không có mục nào
         }
         // --- HÀM TẢI DỮ LIỆU LÊN DATAGRIDVIEW ---
         private void LoadDataGridView()
@@ -65,15 +65,15 @@ namespace QuanLyCuaHangTV
         private void LoadComboBoxMaNhanVien()
         {
             
-            string sql = "SELECT MaNhanVien, HoTen FROM FormNhanVien";
-            Functions.FillCombo(sql, cmbMaNhanVien, "MaNhanVien", "MaNhanVien");
+            string sql = "SELECT MaNhanVien, HoTen FROM FormNhanVien";//Lấy dữ liệu từ bảng Nhân Viên
+            Functions.FillCombo(sql, cmbMaNhanVien, "MaNhanVien", "MaNhanVien");//Chỉ hiển thị Mã Nhân Viên
         }
 
         private void LoadComboBoxMaKhachHang()
         {
            
-            string sql = "SELECT MaKhachHang, HoTen FROM FormKhachHang";
-            Functions.FillCombo(sql, cmbMaKhachHang, "MaKhachHang", "MaKhachHang");
+            string sql = "SELECT MaKhachHang, HoTen FROM FormKhachHang";//Lấy dữ liệu từ bảng Khách Hàng
+            Functions.FillCombo(sql, cmbMaKhachHang, "MaKhachHang", "MaKhachHang");//Chỉ hiển thị Mã Khách Hàng
         }
 
 
@@ -124,8 +124,8 @@ namespace QuanLyCuaHangTV
 
             // 1. Validation (Kiểm tra dữ liệu)
             if (txtMaHoaDon.Text.Trim() == "") { MessageBox.Show("Mã hóa đơn không rỗng!"); txtMaHoaDon.Focus(); return; }
-            if (cmbMaNhanVien.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn nhân viên!"); cmbMaNhanVien.Focus(); return; }
-            if (cmbMaKhachHang.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn khách hàng!"); cmbMaKhachHang.Focus(); return; }
+            if (cmbMaNhanVien.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn nhân viên!"); cmbMaNhanVien.Focus(); return; } // Kiểm tra chọn nhân viên
+            if (cmbMaKhachHang.SelectedIndex == -1) { MessageBox.Show("Bạn phải chọn khách hàng!"); cmbMaKhachHang.Focus(); return; }// Kiểm tra chọn khách hàng
 
             //Kiểm tra Tổng tiền có phải là số hợp lệ không
             decimal tongTien;
@@ -214,7 +214,8 @@ namespace QuanLyCuaHangTV
         }
 
         private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//lý do dùng CellClick thay vì CellContentClick là vì CellClick sẽ phản hồi khi người dùng nhấp vào bất kỳ đâu trong ô, trong khi CellContentClick chỉ phản hồi khi nhấp vào nội dung bên trong ô (như văn bản hoặc hình ảnh).
+         //Điều này giúp cải thiện trải nghiệm người dùng khi chọn hàng trong DataGridView.
             if (btnThem.Enabled == false) { return; }
             if (tblHoaDon.Rows.Count == 0) { return; }
             if (e.RowIndex < 0) { return; } // Tránh click vào header
@@ -227,7 +228,7 @@ namespace QuanLyCuaHangTV
             cmbMaKhachHang.SelectedValue = dgvHoaDon.CurrentRow.Cells["MaKhachHang"].Value.ToString();
 
             // Gán giá trị cho DateTimePicker (cần ép kiểu)
-            if (dgvHoaDon.CurrentRow.Cells["NgayLap"].Value != DBNull.Value)
+            if (dgvHoaDon.CurrentRow.Cells["NgayLap"].Value != DBNull.Value)// Kiểm tra giá trị không phải null
             {
                 dtpNgayLap.Value = (DateTime)dgvHoaDon.CurrentRow.Cells["NgayLap"].Value;
             }

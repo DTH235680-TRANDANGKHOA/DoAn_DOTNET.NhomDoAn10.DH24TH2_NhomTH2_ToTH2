@@ -98,12 +98,12 @@ namespace QuanLyCuaHangTV
        
         private void btnThem_Click(object sender, EventArgs e)
         {
-            ResetValues();
+            ResetValues();// Xóa trắng các ô nhập
             txtMaTonKho.Enabled = true; // Cho phép nhập mã Tồn kho mới
-            txtMaTonKho.Focus();
-            btnLuu.Enabled = true;
+            txtMaTonKho.Focus();// Đặt con trỏ vào ô Mã Tồn kho
+            btnLuu.Enabled = true;// Cho phép nút Lưu
 
-            btnThem.Enabled = false;
+            btnThem.Enabled = false;// Tắt nút Thêm
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
         }
@@ -126,7 +126,7 @@ namespace QuanLyCuaHangTV
             string sql;
 
             // 1. Validation (Kiểm tra dữ liệu)
-            if (txtMaTonKho.Text.Trim() == "") { MessageBox.Show("Mã tồn kho không rỗng!"); txtMaTonKho.Focus(); return; }
+            if (txtMaTonKho.Text.Trim() == "") { MessageBox.Show("Mã tồn kho không rỗng!"); txtMaTonKho.Focus(); return; }// Kiểm tra Mã tồn kho không rỗng
 
             // Kiểm tra ComboBox đã được chọn chưa
             if (cmbMaTIVI.SelectedIndex == -1)
@@ -225,7 +225,7 @@ namespace QuanLyCuaHangTV
         }
 
         private void dgvTonKho_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//lý do dùng CellClick thay vì CellContentClick là để bắt sự kiện khi người dùng nhấp vào bất kỳ đâu trong ô của DataGridView, không chỉ khi họ nhấp vào nội dung cụ thể bên trong ô đó.
             if (btnThem.Enabled == false) { return; }
             if (tblTonKho.Rows.Count == 0) { return; }
             if (e.RowIndex < 0) { return; } // Tránh click vào header

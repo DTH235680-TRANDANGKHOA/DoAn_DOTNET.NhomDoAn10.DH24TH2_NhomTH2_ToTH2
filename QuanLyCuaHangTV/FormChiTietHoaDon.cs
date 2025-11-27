@@ -55,9 +55,9 @@ namespace QuanLyCuaHangTV
             dgvChiTietHoaDon.Columns["SoLuongMua"].HeaderText = "Số Lượng";
             dgvChiTietHoaDon.Columns["DonGia"].HeaderText = "Đơn Giá";
 
-            dgvChiTietHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvChiTietHoaDon.AllowUserToAddRows = false;
-            dgvChiTietHoaDon.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgvChiTietHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;// Tự động điều chỉnh kích thước cột
+            dgvChiTietHoaDon.AllowUserToAddRows = false;// Không cho người dùng thêm dữ liệu trực tiếp
+            dgvChiTietHoaDon.EditMode = DataGridViewEditMode.EditProgrammatically;// Không cho sửa dữ liệu trực tiếp
         }
 
        
@@ -67,7 +67,7 @@ namespace QuanLyCuaHangTV
         {
             // Hiển thị Mã Hóa Đơn
             string sql = "SELECT MaHoaDon FROM FormHoaDon";
-            Functions.FillCombo(sql, cmbMaHoaDon, "MaHoaDon", "MaHoaDon");
+            Functions.FillCombo(sql, cmbMaHoaDon, "MaHoaDon", "MaHoaDon");// Hiển thị Mã Hóa Đơn
         }
 
         private void LoadComboBoxMaTIVI()
@@ -98,9 +98,9 @@ namespace QuanLyCuaHangTV
         {
             ResetValues();
             txtMaChiTietHD.Enabled = true; // Cho phép nhập mã CTHD mới
-            txtMaChiTietHD.Focus();
-            btnLuu.Enabled = true;
-            btnThem.Enabled = false;
+            txtMaChiTietHD.Focus();// Focus vào ô nhập mã CTHD
+            btnLuu.Enabled = true;// Cho phép nút Lưu
+            btnThem.Enabled = false;// Chặn không cho bấm thêm nữa
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
         }
@@ -109,10 +109,10 @@ namespace QuanLyCuaHangTV
         {
             if (txtMaChiTietHD.Text == "") { MessageBox.Show("Bạn chưa chọn mục nào"); return; }
             txtMaChiTietHD.Enabled = false; // Không cho sửa khóa chính
-            btnLuu.Enabled = true;
+            btnLuu.Enabled = true;// Cho phép nút Lưu
             btnThem.Enabled = false;
             btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+            btnXoa.Enabled = false;// Chặn không cho bấm sửa nữa
             cmbMaHoaDon.Focus(); // Focus vào control đầu tiên
         }
 
@@ -196,7 +196,8 @@ namespace QuanLyCuaHangTV
         }
 
         private void dgvChiTietHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//lý do dùng CellClick thay vì CellContentClick là vì CellClick sẽ phản hồi khi người dùng nhấp vào bất kỳ đâu trong ô, trong khi CellContentClick chỉ phản hồi khi người dùng nhấp vào nội dung bên trong ô (như văn bản hoặc hình ảnh).
+         //Điều này giúp cải thiện trải nghiệm người dùng khi chọn hàng trong DataGridView.
             if (btnThem.Enabled == false) { return; }
             if (tblCTHD.Rows.Count == 0) { return; }
             if (e.RowIndex < 0) { return; } // Tránh click vào header
