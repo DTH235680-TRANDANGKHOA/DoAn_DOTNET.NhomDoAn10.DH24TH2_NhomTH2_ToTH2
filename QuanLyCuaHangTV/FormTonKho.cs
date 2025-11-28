@@ -249,5 +249,79 @@ namespace QuanLyCuaHangTV
             btnLuu.Enabled = false;
             txtMaTonKho.Enabled = false;
         }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            // 1. Viết câu lệnh SQL lọc dữ liệu
+            string sql = "SELECT * FROM FormTonKho WHERE SoLuongTon > 50";
+
+            // 2. Lấy dữ liệu mới từ Database
+            tblTonKho = Functions.GetDataToTable(sql);
+
+            // 3. Kiểm tra xem có kết quả không
+            if (tblTonKho.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có mặt hàng nào có số lượng tồn lớn hơn 50!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            // 4. Gán dữ liệu vào DataGridView
+            dgvTonKho.DataSource = tblTonKho;
+
+            // 5. Reset lại các ô nhập liệu cho sạch sẽ
+            ResetValues();
+        }
+
+        // --- (TÙY CHỌN) NÚT HIỂN THỊ LẠI TẤT CẢ ---
+        // Nếu bạn muốn quay lại danh sách đầy đủ sau khi tìm kiếm, 
+        // hãy thêm một nút "Hủy Tìm" hoặc "Hiển Thị Lại" và gọi hàm này:
+        private void btnHienThiLai_Click(object sender, EventArgs e)
+        {
+            LoadDataGridView(); // Gọi lại hàm tải dữ liệu gốc ban đầu
+            ResetValues();
+        }
+
+        private void btnXuat_Click(object sender, EventArgs e)
+        {
+            if (dgvTonKho.Rows.Count > 0)
+            {
+                XuatRaExcel(dgvTonKho); // Truyền cái bảng ní muốn xuất vào đây
+            }
+        }
+        private void XuatRaExcel(DataGridView dgv)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel.Worksheet worksheet = null;
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "DanhSachSinhVien";
+
+                // Xuất tiêu đề
+                for (int i = 0; i < dgv.Columns.Count; i++)
+                {
+                    worksheet.Cells[1, i + 1] = dgv.Columns[i].HeaderText;
+                }
+
+                // Xuất nội dung
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dgv.Columns.Count; j++)
+                    {
+                        if (dgv.Rows[i].Cells[j].Value != null)
+                        {
+                            worksheet.Cells[i + 2, j + 1] = dgv.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                }
+
+                worksheet.Columns.AutoFit(); // Căn chỉnh cột tự động
+                excelApp.Visible = true; // Hiện Excel lên
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
     }
 }

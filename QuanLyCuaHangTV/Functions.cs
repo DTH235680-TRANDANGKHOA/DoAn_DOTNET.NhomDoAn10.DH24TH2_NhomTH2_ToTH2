@@ -41,6 +41,7 @@ namespace QuanLyCuaHangTV
                 }
             }
         }
+
         public static void Disconnect()
         {
             if (Con != null && Con.State == ConnectionState.Open)
@@ -65,6 +66,30 @@ namespace QuanLyCuaHangTV
             dap.Fill(table);
             return table;
         }
+        // Đặt hàm này trong class Functions của bạn (ví dụ: public static class Functions)
+
+        public static string GetFieldValues(string sql)
+        {
+            string ma = ""; // Biến để lưu trữ giá trị duy nhất (Đơn giá, Tên,...)
+
+            // Mở kết nối nếu chưa mở (Giả định bạn có hàm Connect / Close trong Functions)
+            // Functions.Connect(); 
+
+            SqlCommand cmd = new SqlCommand(sql, Con); // Giả định Con là SqlConnection object trong Functions
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                // Lấy giá trị của cột đầu tiên (index 0)
+                ma = reader.GetValue(0).ToString();
+            }
+
+            reader.Close();
+            // Functions.Disconnect(); // Đóng kết nối nếu cần
+
+            return ma;
+        }
+
         //Hàm kiểm tra khoá trùng
         public static bool CheckKey(string sql)
         {

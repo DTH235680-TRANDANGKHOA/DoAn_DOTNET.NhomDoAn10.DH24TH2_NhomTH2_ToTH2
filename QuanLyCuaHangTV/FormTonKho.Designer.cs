@@ -47,6 +47,9 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvTonKho = new System.Windows.Forms.DataGridView();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnXuat = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTonKho)).BeginInit();
@@ -161,6 +164,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel2.Controls.Add(this.btnXuat);
+            this.panel2.Controls.Add(this.btnTimKiem);
             this.panel2.Controls.Add(this.btnThoat);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Controls.Add(this.btnSua);
@@ -178,7 +183,7 @@
             this.btnThoat.ForeColor = System.Drawing.Color.Black;
             this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThoat.Location = new System.Drawing.Point(1030, 19);
+            this.btnThoat.Location = new System.Drawing.Point(944, 21);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(95, 62);
             this.btnThoat.TabIndex = 16;
@@ -202,7 +207,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnSua.ForeColor = System.Drawing.Color.Black;
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -216,11 +221,11 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.BackColor = System.Drawing.Color.Blue;
+            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnLuu.ForeColor = System.Drawing.Color.Black;
             this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(595, 19);
+            this.btnLuu.Location = new System.Drawing.Point(533, 18);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(106, 62);
             this.btnLuu.TabIndex = 14;
@@ -230,11 +235,11 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnXoa.ForeColor = System.Drawing.Color.Black;
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(833, 19);
+            this.btnXoa.Location = new System.Drawing.Point(760, 21);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(115, 62);
             this.btnXoa.TabIndex = 15;
@@ -254,6 +259,28 @@
             this.dgvTonKho.TabIndex = 2;
             this.dgvTonKho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTonKho_CellClick);
             this.dgvTonKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachTonKho_CellContentClick);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnTimKiem.Location = new System.Drawing.Point(1221, 18);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(178, 60);
+            this.btnTimKiem.TabIndex = 17;
+            this.btnTimKiem.Text = "Tìm kiếm số lượng tồn kho trên 50";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // btnXuat
+            // 
+            this.btnXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnXuat.Location = new System.Drawing.Point(1092, 22);
+            this.btnXuat.Name = "btnXuat";
+            this.btnXuat.Size = new System.Drawing.Size(87, 60);
+            this.btnXuat.TabIndex = 18;
+            this.btnXuat.Text = "Xuất excel";
+            this.btnXuat.UseVisualStyleBackColor = false;
+            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
             // 
             // FormTonKho
             // 
@@ -294,5 +321,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpNgayCapNhat;
         private System.Windows.Forms.ComboBox cmbMaTIVI;
+        private System.Windows.Forms.Button btnTimKiem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnXuat;
     }
 }

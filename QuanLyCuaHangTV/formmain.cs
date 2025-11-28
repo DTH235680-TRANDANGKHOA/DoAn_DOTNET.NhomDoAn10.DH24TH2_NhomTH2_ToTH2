@@ -89,5 +89,10 @@ namespace QuanLyCuaHangTV
         {
            
         }
+
+        private void danhMucToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

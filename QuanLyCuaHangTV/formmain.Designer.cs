@@ -54,7 +54,7 @@
             this.mnuThoat});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1683, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1683, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,15 +74,16 @@
             this.mnuChiTietHoaDon});
             this.danhMucToolStripMenuItem.ForeColor = System.Drawing.Color.Yellow;
             this.danhMucToolStripMenuItem.Name = "danhMucToolStripMenuItem";
-            this.danhMucToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
+            this.danhMucToolStripMenuItem.Size = new System.Drawing.Size(134, 29);
             this.danhMucToolStripMenuItem.Text = "Danh Mục TV";
+            this.danhMucToolStripMenuItem.Click += new System.EventHandler(this.danhMucToolStripMenuItem_Click);
             // 
             // mnuTonKho
             // 
             this.mnuTonKho.BackColor = System.Drawing.SystemColors.Highlight;
             this.mnuTonKho.ForeColor = System.Drawing.Color.White;
             this.mnuTonKho.Name = "mnuTonKho";
-            this.mnuTonKho.Size = new System.Drawing.Size(249, 34);
+            this.mnuTonKho.Size = new System.Drawing.Size(270, 34);
             this.mnuTonKho.Text = "Tồn Kho";
             this.mnuTonKho.Click += new System.EventHandler(this.tồnKhoToolStripMenuItem_Click);
             // 
@@ -91,63 +92,63 @@
             this.mnuHangTIVI.BackColor = System.Drawing.SystemColors.Highlight;
             this.mnuHangTIVI.ForeColor = System.Drawing.Color.White;
             this.mnuHangTIVI.Name = "mnuHangTIVI";
-            this.mnuHangTIVI.Size = new System.Drawing.Size(249, 34);
+            this.mnuHangTIVI.Size = new System.Drawing.Size(270, 34);
             this.mnuHangTIVI.Text = "Hãng TIVI";
             this.mnuHangTIVI.Click += new System.EventHandler(this.hãngTIVIToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(246, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(267, 6);
             // 
             // mnuKhachHang
             // 
             this.mnuKhachHang.BackColor = System.Drawing.SystemColors.Highlight;
             this.mnuKhachHang.ForeColor = System.Drawing.Color.White;
             this.mnuKhachHang.Name = "mnuKhachHang";
-            this.mnuKhachHang.Size = new System.Drawing.Size(249, 34);
+            this.mnuKhachHang.Size = new System.Drawing.Size(270, 34);
             this.mnuKhachHang.Text = "Khách Hàng";
             this.mnuKhachHang.Click += new System.EventHandler(this.kháchHàngToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(246, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(267, 6);
             // 
             // mnuNhanVien
             // 
             this.mnuNhanVien.BackColor = System.Drawing.SystemColors.Highlight;
             this.mnuNhanVien.ForeColor = System.Drawing.Color.White;
             this.mnuNhanVien.Name = "mnuNhanVien";
-            this.mnuNhanVien.Size = new System.Drawing.Size(249, 34);
+            this.mnuNhanVien.Size = new System.Drawing.Size(270, 34);
             this.mnuNhanVien.Text = "Nhân Viên";
             this.mnuNhanVien.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(246, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(267, 6);
             // 
             // mnuHoaDon
             // 
             this.mnuHoaDon.BackColor = System.Drawing.SystemColors.Highlight;
             this.mnuHoaDon.ForeColor = System.Drawing.Color.White;
             this.mnuHoaDon.Name = "mnuHoaDon";
-            this.mnuHoaDon.Size = new System.Drawing.Size(249, 34);
+            this.mnuHoaDon.Size = new System.Drawing.Size(270, 34);
             this.mnuHoaDon.Text = "Hóa Đơn";
             this.mnuHoaDon.Click += new System.EventHandler(this.mnuHoaDon_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(246, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(267, 6);
             // 
             // mnuChiTietHoaDon
             // 
             this.mnuChiTietHoaDon.BackColor = System.Drawing.SystemColors.Highlight;
             this.mnuChiTietHoaDon.ForeColor = System.Drawing.Color.White;
             this.mnuChiTietHoaDon.Name = "mnuChiTietHoaDon";
-            this.mnuChiTietHoaDon.Size = new System.Drawing.Size(249, 34);
+            this.mnuChiTietHoaDon.Size = new System.Drawing.Size(270, 34);
             this.mnuChiTietHoaDon.Text = "Chi Tiết Hóa Đơn";
             this.mnuChiTietHoaDon.Click += new System.EventHandler(this.mnuChiTietHoaDon_Click);
             // 
@@ -156,7 +157,7 @@
             this.mnuThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.mnuThoat.ForeColor = System.Drawing.Color.Black;
             this.mnuThoat.Name = "mnuThoat";
-            this.mnuThoat.Size = new System.Drawing.Size(73, 30);
+            this.mnuThoat.Size = new System.Drawing.Size(73, 29);
             this.mnuThoat.Text = "Thoát";
             this.mnuThoat.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
             // 

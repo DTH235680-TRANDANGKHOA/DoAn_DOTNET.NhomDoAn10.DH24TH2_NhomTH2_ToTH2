@@ -34,8 +34,7 @@ namespace QuanLyCuaHangTV
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
 
-            // Tải danh sách Hãng SX vào ComboBox
-            LoadComboBoxHangSX();
+           
 
             // Tải dữ liệu chính
             LoadDataGridView();
@@ -62,19 +61,7 @@ namespace QuanLyCuaHangTV
             dgvQuanLyTV.EditMode = DataGridViewEditMode.EditProgrammatically; //không cho sửa trực tiếp
         }
 
-        // --- HÀM MỚI: TẢI DỮ LIỆU CHO COMBOBOX HÃNG SẢN XUẤT ---
-        private void LoadComboBoxHangSX()
-        {
-            // Lấy danh sách các hãng (không trùng lặp)
-            string sql = "SELECT DISTINCT HangSanXuat FROM FormQuanLyTV";
-            DataTable dt = Functions.GetDataToTable(sql);
-
-            // Gán nguồn dữ liệu cho ComboBox
-            cmbHangSX.DataSource = dt;
-            cmbHangSX.DisplayMember = "HangSanXuat"; // Cột để hiển thị
-            cmbHangSX.ValueMember = "HangSanXuat";   // Cột để lấy giá trị
-            cmbHangSX.SelectedIndex = -1; // Bỏ chọn lúc đầu
-        }
+       
 
 
         // --- HÀM RESET ---
@@ -170,7 +157,7 @@ namespace QuanLyCuaHangTV
 
             // 4. Tải lại Grid và ComboBox (phòng trường hợp có hãng mới)
             LoadDataGridView();
-            LoadComboBoxHangSX();
+           
             ResetValues();
 
             // 5. Reset nút
@@ -189,7 +176,7 @@ namespace QuanLyCuaHangTV
                 string sql = "DELETE FormQuanLyTV WHERE MaTIVI=N'" + txtMaTIVI.Text + "'";
                 Functions.RunSQL(sql);
                 LoadDataGridView();
-                LoadComboBoxHangSX(); // Tải lại ComboBox
+             
                 ResetValues();
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
@@ -210,6 +197,7 @@ namespace QuanLyCuaHangTV
 
             // Gán giá trị cho ComboBox (dùng .Text là đúng)
             cmbHangSX.Text = dgvQuanLyTV.CurrentRow.Cells["HangSanXuat"].Value.ToString();
+          
 
             txtSoLuong.Text = dgvQuanLyTV.CurrentRow.Cells["SoLuong"].Value.ToString();
             txtGia.Text = dgvQuanLyTV.CurrentRow.Cells["Gia"].Value.ToString();
